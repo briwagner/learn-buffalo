@@ -1,7 +1,7 @@
 package grifts
 
 import (
-	"modelsdemo/actions"
+	"learnbuffalo/actions"
 
 	"github.com/gobuffalo/buffalo"
 )

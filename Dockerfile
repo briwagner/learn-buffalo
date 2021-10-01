@@ -5,8 +5,8 @@ FROM gobuffalo/buffalo:v0.16.26 as builder
 ENV GO111MODULE on
 ENV GOPROXY http://proxy.golang.org
 
-RUN mkdir -p /src/modelsdemo
-WORKDIR /src/modelsdemo
+RUN mkdir -p /src/learnbuffalo
+WORKDIR /src/learnbuffalo
 
 # this will cache the npm install step, unless package.json changes
 ADD package.json .
