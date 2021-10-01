@@ -3,7 +3,7 @@ package main
 import (
 	"log"
 
-	"modelsdemo/actions"
+	"learnbuffalo/actions"
 )
 
 // main is the starting point for your Buffalo application.

@@ -1,11 +1,11 @@
-module modelsdemo
+module learnbuffalo
 
 go 1.16
 
 require (
 	github.com/gobuffalo/buffalo v0.15.5
-	github.com/gobuffalo/buffalo-pop/v2 v2.3.0
 	github.com/gobuffalo/envy v1.9.0
+	github.com/gobuffalo/httptest v1.5.0 // indirect
 	github.com/gobuffalo/mw-csrf v0.0.0-20190129204204-25460a055517
 	github.com/gobuffalo/mw-forcessl v0.0.0-20180802152810-73921ae7a130
 	github.com/gobuffalo/mw-i18n v0.0.0-20190129204410-552713a3ebb4
