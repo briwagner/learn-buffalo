@@ -10,7 +10,6 @@ node_modules/
 public/assets/
 .vscode/
 .grifter/
-.env
 **/.DS_Store
 *.pid
 coverage
