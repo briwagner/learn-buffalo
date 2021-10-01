@@ -1,11 +1,11 @@
 ---
 development:
   dialect: "mariadb"
-  database: "modelsdemo_development"
+  database: "modelsdemo"
   host: "localhost"
   port: "3306"
-  user: "root"
-  password: "root"
+  user: "buffalo"
+  password: "password"
 
 test:
   dialect: "mariadb"
@@ -20,8 +20,8 @@ test:
   database: "modelsdemo_test"
   host: "localhost"
   port: "3306"
-  user: "root"
-  password: "root"
+  user: "buffalo"
+  password: "password"
 
 production:
   #

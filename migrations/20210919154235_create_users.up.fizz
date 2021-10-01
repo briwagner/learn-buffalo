@@ -1,0 +1,7 @@
+create_table("users") {
+	t.Column("id", "uuid", {primary: true})
+	t.Column("first_name", "string", {})
+	t.Column("last_name", "string", {})
+	t.Column("age", "integer", {})
+	t.Timestamps()
+}
