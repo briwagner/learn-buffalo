@@ -58,6 +58,27 @@ CREATE TABLE `blogs` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Table structure for table `blogs_tags`
+--
+
+DROP TABLE IF EXISTS `blogs_tags`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `blogs_tags` (
+  `id` char(36) NOT NULL,
+  `blog_id` char(36) NOT NULL,
+  `tag_id` char(36) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `blog_id` (`blog_id`),
+  KEY `tag_id` (`tag_id`),
+  CONSTRAINT `blogs_tags_ibfk_1` FOREIGN KEY (`blog_id`) REFERENCES `blogs` (`id`),
+  CONSTRAINT `blogs_tags_ibfk_2` FOREIGN KEY (`tag_id`) REFERENCES `tags` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Table structure for table `schema_migration`
 --
 
@@ -67,6 +88,22 @@ DROP TABLE IF EXISTS `schema_migration`;
 CREATE TABLE `schema_migration` (
   `version` varchar(14) NOT NULL,
   UNIQUE KEY `schema_migration_version_idx` (`version`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `tags`
+--
+
+DROP TABLE IF EXISTS `tags`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tags` (
+  `id` char(36) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -97,4 +134,4 @@ CREATE TABLE `users` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-10-03 11:49:47
+-- Dump completed on 2021-10-03 18:11:26
