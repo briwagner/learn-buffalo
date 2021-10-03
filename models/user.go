@@ -33,6 +33,18 @@ func (u User) String() string {
 	return string(ju)
 }
 
+// Address looks for Address from this user in DB.
+func (u *User) GetAddress(tx *pop.Connection) error {
+	a := Address{}
+	err := tx.Where("user_id = (?)", u.ID).Last(&a)
+	if err != nil {
+		return err
+	}
+
+	u.UserAddress = a
+	return nil
+}
+
 // GetBlogs looks for Blogs from this user in DB.
 func (u *User) GetBlogs(tx *pop.Connection) error {
 	bs := []Blog{}

@@ -1,6 +1,8 @@
 package models
 
-import "github.com/gofrs/uuid"
+import (
+	"github.com/gofrs/uuid"
+)
 
 func (ms *ModelSuite) Test_User() {
 	u := &User{
@@ -40,6 +42,16 @@ func (ms *ModelSuite) Test_UserAddress() {
 	}
 
 	ms.NotEqual(uuid.Nil, u.UserAddress.ID, "Address saved along with User.")
+
+	u2 := User{}
+	err = db.Find(&u2, u.ID)
+	if err != nil {
+		panic(err)
+	}
+
+	ms.Empty(u2.UserAddress, "User address not loaded by default")
+	u2.GetAddress(db)
+	ms.NotEmpty(u2.UserAddress, "GetAddress loads user address")
 }
 
 func (ms *ModelSuite) Test_UserBlogs() {
