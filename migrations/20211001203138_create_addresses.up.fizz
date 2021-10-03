@@ -1,0 +1,10 @@
+create_table("addresses") {
+	t.Column("id", "uuid", {primary: true})
+	t.Column("street", "string", {})
+	t.Column("city", "string", {})
+	t.Column("state", "string", {})
+	t.Column("zip", "string", {})
+  t.Column("user_id", "uuid", {})
+  t.ForeignKey("user_id", {"users": ["id"]})
+	t.Timestamps()
+}
