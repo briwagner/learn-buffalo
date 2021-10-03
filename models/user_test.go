@@ -1,8 +1,6 @@
 package models
 
-import (
-	"github.com/gofrs/uuid"
-)
+import "github.com/gofrs/uuid"
 
 func (ms *ModelSuite) Test_User() {
 	u := &User{

@@ -5,10 +5,6 @@ import (
 )
 
 func (ms *ModelSuite) Test_Address() {
-	// 1. Cannot create address alone.
-	// 2. Creating User without eager will not save Address.
-	// 3. Loading address will automatically load User (is this true?)
-	// 4. The reverse is not true. It's possible to load User w/o Address.
 	a := &Address{
 		Street: "1 Main Street",
 		City:   "Everytown",
@@ -33,8 +29,8 @@ func (ms *ModelSuite) Test_Address() {
 	ms.False(verrs.HasAny(), "Address and user creation have no validation errors.")
 
 	a2 := &Address{}
-	db.Eager("User").Find(a2, u.UserAddress.ID)
+	db.Eager().Find(a2, u.UserAddress.ID)
 
 	ms.Equal(u.UserAddress.ID, a2.ID, "Find Address in database using ID.")
-	ms.NotNil(a2.User, "User is not loaded with Address.")
+	ms.Equal("Joe Smith", a2.User.FullName(), "User is loaded with Address.")
 }
