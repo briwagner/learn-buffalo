@@ -41,3 +41,36 @@ func (ms *ModelSuite) Test_UserAddress() {
 
 	ms.NotEqual(uuid.Nil, u.UserAddress.ID, "Address saved along with User.")
 }
+
+func (ms *ModelSuite) Test_UserBlogs() {
+	u := &User{
+		FirstName: "Nikola",
+		LastName:  "Tesla",
+		Age:       25,
+		Blogs: Blogs{Blog{
+			Title: "First blog",
+			Body:  "<p>Interesting content",
+		}},
+	}
+
+	db := ms.DB
+	_, err := db.Eager().ValidateAndCreate(u)
+	if err != nil {
+		panic(err)
+	}
+
+	u2 := User{}
+	err = db.Find(&u2, u.ID)
+	if err != nil {
+		panic(err)
+	}
+
+	ms.Empty(u2.Blogs, "Blogs not loaded with user by default.")
+	ms.Equal("Nikola Tesla", u2.FullName(), "Confirm the correct user is loaded.")
+
+	err = u2.GetBlogs(db)
+	if err != nil {
+		panic(err)
+	}
+	ms.Len(u2.Blogs, 1, "GetBlogs loads the user's blogs.")
+}
