@@ -4,9 +4,9 @@ This repo contains the code used in the Learn Buffalo video course.
 
 Sections Completed:
 
-1. <a href="tree/part-1">Part 1</a>: new project, static page, and route parameters
-1. <a href="tree/part-2">Part 2</a>: create a user model, add fields and methods, and test it
-1. <a href="tree/part-3">Part 3</a>: models and associations, one-to-one, one-to-many, many-to-many
+1. <a href="/briwagner/learn-buffalo/tree/part-1">Part 1</a>: new project, static page, and route parameters
+1. <a href="/briwagner/learn-buffalo/tree/part-2">Part 2</a>: create a user model, add fields and methods, and test it
+1. <a href="/briwagner/learn-buffalo/tree/part-3">Part 3</a>: models and associations, one-to-one, one-to-many, many-to-many
 
 Sections Planned:
 
