@@ -4,16 +4,22 @@ This repo contains the code used in the Learn Buffalo video course.
 
 Sections Completed:
 
-1. Part 1: new project, static page, and route parameters
-2. Part 2: create a user model, add fields and methods, and test it
+1. <a href="tree/part-1">Part 1</a>: new project, static page, and route parameters
+1. <a href="tree/part-2">Part 2</a>: create a user model, add fields and methods, and test it
+1. <a href="tree/part-3">Part 3</a>: models and associations, one-to-one, one-to-many, many-to-many
 
 Sections Planned:
 
-1. Part 3: models and associations, one-to-one, one-to-many, many-to-many
-2. Part 4: using controllers with our models
-3. Part 5: HTML templates, forms and helpers
-5. Part 6: CLI operations to build a production build, and other tasks
-4. Part 7: connecting to external resources for logging, email, database needs
+1. Part 4: using controllers with our models
+1. Part 5: HTML templates, forms and helpers
+1. Part 6: CLI operations to build a production build, and other tasks
+1. Part 7: connecting to external resources for logging, email, database needs
+
+## Installation
+
+Fork the project.
+Each part listed above has a matching branch.
+After cloning the repo to your local machine, `git checkout {branch-name}` to view the part.
 
 ## Buffalo Project
 
