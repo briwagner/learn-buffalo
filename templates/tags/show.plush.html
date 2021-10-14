@@ -1,0 +1,7 @@
+<h1><%= tag.Name %></h1>
+
+<ul>
+  <%= for (b) in tag.RelatedBlogs { %>
+    <li><%= b.Title %></li>
+  <% } %>
+</ul>

@@ -1,0 +1,23 @@
+<h1><%= blog.Title %></h1>
+
+<p><%= blog.User.FullName() %></p>
+
+<%= raw(blog.Body) %>
+
+<ul>
+  <%= for (t) in blog.BlogTags { %>
+    <li><span class="badge badge-info"><%= linkTo(t, {body: t.Name}) %></span></li>
+  <% } %>
+</ul>
+
+<%= if (relatedBlogs) { %>
+  <h2>You may also like</h2>
+  <div class="cards">
+    <%= for (related) in relatedBlogs { %>
+      <div class="card">
+        <h3 class="card-title"><%= related.Blog.Title %></h3>
+        <%= linkTo(related.Blog, {body: "View"}) %>
+      </div>
+    <% } %>
+  </div>
+<% } %>
