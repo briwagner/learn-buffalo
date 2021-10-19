@@ -56,7 +56,7 @@ func BlogsNew(c buffalo.Context) error {
 	}
 
 	u := &models.User{}
-	err = tx.Find(u, "5eb0ad19-9ab5-42ab-bc7b-9e8c795c0d5a")
+	err = tx.Last(u)
 	if err != nil {
 		c.Flash().Add("warning", "Cannot find user")
 		return c.Redirect(301, "/")
@@ -76,5 +76,5 @@ func BlogsNew(c buffalo.Context) error {
 
 	c.Set("blog", b)
 	c.Flash().Add("info", "Created blog")
-	return c.Redirect(301, fmt.Sprintf("/blogs/%d", b.ID))
+	return c.Redirect(301, fmt.Sprintf("/blogs/%s", b.ID.String()))
 }
