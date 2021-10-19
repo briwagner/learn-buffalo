@@ -1,6 +1,7 @@
 package actions
 
 import (
+	"fmt"
 	"learnbuffalo/models"
 	"log"
 	"net/http"
@@ -35,4 +36,45 @@ func BlogsShow(c buffalo.Context) error {
 
 	c.Set("blog", blog)
 	return c.Render(http.StatusOK, r.HTML("blogs/show.html"))
+}
+
+// BlogsCreate shows the form to create a new blog.
+func BlogsCreate(c buffalo.Context) error {
+	b := models.Blog{}
+	c.Set("blog", b)
+	return c.Render(http.StatusOK, r.HTML("blogs/create.html"))
+}
+
+// BlogsNew responds to POST request to create a new blog.
+func BlogsNew(c buffalo.Context) error {
+	tx := c.Value("tx").(*pop.Connection)
+	b := &models.Blog{}
+	err := c.Bind(b)
+	if err != nil {
+		c.Flash().Add("warning", "Form binding error")
+		return c.Redirect(301, "/")
+	}
+
+	u := &models.User{}
+	err = tx.Find(u, "5eb0ad19-9ab5-42ab-bc7b-9e8c795c0d5a")
+	if err != nil {
+		c.Flash().Add("warning", "Cannot find user")
+		return c.Redirect(301, "/")
+	}
+
+	b.User = u
+
+	verrs, err := tx.ValidateAndCreate(b)
+	if err != nil {
+		return c.Redirect(301, "/")
+	}
+
+	if verrs.HasAny() {
+		c.Flash().Add("warning", "Form validation errors")
+		return c.Redirect(301, "/")
+	}
+
+	c.Set("blog", b)
+	c.Flash().Add("info", "Created blog")
+	return c.Redirect(301, fmt.Sprintf("/blogs/%d", b.ID))
 }
