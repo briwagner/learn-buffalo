@@ -11,6 +11,10 @@
   </head>
   <body>
 
+    <%= contentOf("message", {"label": "helper"})  { %>
+      <p>default block</p>
+    <% } %>
+
     <div class="container">
       <%= partial("flash.html") %>
       <%= yield %>

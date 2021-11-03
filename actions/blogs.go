@@ -11,6 +11,22 @@ import (
 )
 
 // BlogsShow shows blog by ID.
+func BlogsIndex(c buffalo.Context) error {
+	tx := c.Value("tx").(*pop.Connection)
+	blogs := models.Blogs{}
+
+	err := tx.All(&blogs)
+	if err != nil {
+		c.Flash().Add("warning", "No blogs found")
+		c.Redirect(307, "/")
+	}
+
+	c.Set("blogs", blogs)
+	return c.Render(http.StatusOK, r.HTML("blogs/index"))
+
+}
+
+// BlogsShow shows blog by ID.
 func BlogsShow(c buffalo.Context) error {
 	tx := c.Value("tx").(*pop.Connection)
 	blog := models.Blog{}
@@ -35,7 +51,7 @@ func BlogsShow(c buffalo.Context) error {
 	}
 
 	c.Set("blog", blog)
-	return c.Render(http.StatusOK, r.HTML("blogs/show.html"))
+	return c.Render(http.StatusOK, r.HTML("blogs/show"))
 }
 
 // BlogsCreate shows the form to create a new blog.

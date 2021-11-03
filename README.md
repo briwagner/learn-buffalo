@@ -2,13 +2,14 @@
 
 This repo contains the code used in the Learn Buffalo video course.
 
-## Part 3: models and associations, one-to-one, one-to-many, many-to-many
+## Part 5: HTML templates amd helpers
 
-* one-to-one relation: User -> Address
-* one-to-many relation: User -> Blogs
-* using join tables to manage many-to-many relations
-* many-to-many relation: Blogs <-> Tags
-* manage child entities with pop's Eager() method, or using model methods
+* partials
+* helpers, linkTo()
+* contentFor is expanded into contentOf area; set default content as well
+* paginate
+* Auto() and JSON responses
+* disabling Bootstrap, in favor of default form helpers?
 
 ### Installation
 
@@ -18,10 +19,6 @@ The current file assumes:
 * db name: modelsdemo for dev, and modelsdemo_test for test
 * db user: buffalo
 * password: 'password'
-
-### Going Further
-
-* foreign-key constraint violation; allow child entities to have NULL for parent
 
 ## Buffalo Project
 

@@ -1,0 +1,7 @@
+<h1>Blogs</h1>
+
+<ul>
+  <%= for (b) in blogs { %>
+    <li><%= linkTo(b, {body: b.Title}) %></li>
+  <% } %>
+</ul>

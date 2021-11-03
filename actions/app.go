@@ -63,8 +63,9 @@ func App() *buffalo.App {
 
 		app.GET("/tags/{id}", TagsShow)
 		app.GET("/blogs/{id}", BlogsShow)
+		app.GET("/blogs/", BlogsIndex)
 		app.POST("/blogs", BlogsNew)
-		app.GET("/blogs", BlogsCreate)
+		app.GET("/blogs/new", BlogsCreate)
 
 		app.ServeFiles("/", assetsBox) // serve files from the public directory
 	}
