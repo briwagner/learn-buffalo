@@ -2,13 +2,13 @@
 
 This repo contains the code used in the Learn Buffalo video course.
 
-## Part 3: models and associations, one-to-one, one-to-many, many-to-many
+## Part 4: using controllers with our models
 
-* one-to-one relation: User -> Address
-* one-to-many relation: User -> Blogs
-* using join tables to manage many-to-many relations
-* many-to-many relation: Blogs <-> Tags
-* manage child entities with pop's Eager() method, or using model methods
+* CLI steps to create an action and handler function
+* modify the handler to return some data
+* create a grift task to seed data in the DB
+* testing controllers with ActionSuite, using test fixtures to setup test data
+* pop Eager() method to load model associations
 
 ### Installation
 
@@ -21,7 +21,7 @@ The current file assumes:
 
 ### Going Further
 
-* foreign-key constraint violation; allow child entities to have NULL for parent
+* add index listing page for all blogs
 
 ## Buffalo Project
 
