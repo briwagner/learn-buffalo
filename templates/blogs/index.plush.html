@@ -1,7 +1,13 @@
 <h1>Blogs</h1>
 
-<ul>
+<ul class="list-group blog-list cards">
   <%= for (b) in blogs { %>
-    <li><%= linkTo(b, {body: b.Title}) %></li>
+    <li class="list-group-item">
+      <%= partial("blogs/card.html") %>
+    </li>
   <% } %>
 </ul>
+
+<%= contentFor("pre_header") { %>
+  <p class="pre-header">Thanks for visiting our blogs.</p>
+<% } %>

@@ -11,21 +11,10 @@
   </head>
   <body>
 
-    <%= contentOf("pre_header") { %>
-    <% } %>
-
-    <%= partial("partials/header.html") %>
-
-    <div class="messages">
-      Messages content
-    </div>
-
     <div class="container">
       <%= partial("flash.html") %>
       <%= yield %>
     </div>
-
-    <%= partial("partials/footer.html") %>
 
     <%= javascriptTag("application.js") %>
   </body>

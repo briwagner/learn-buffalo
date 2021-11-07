@@ -1,0 +1,5 @@
+<div class="card">
+  <h3 class="card-title"><%= b.Title %></h3>
+  <p><%= formatTime(b.UpdatedAt, "short") %></p>
+  <%= linkTo(b, {body: "View"}) %>
+</div>

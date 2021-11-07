@@ -58,7 +58,7 @@ func BlogsShow(c buffalo.Context) error {
 func BlogsCreate(c buffalo.Context) error {
 	b := models.Blog{}
 	c.Set("blog", b)
-	return c.Render(http.StatusOK, r.HTML("blogs/create.html"))
+	return c.Render(http.StatusOK, r.HTML("blogs/create.html", "admin.html"))
 }
 
 // BlogsNew responds to POST request to create a new blog.

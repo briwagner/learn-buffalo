@@ -1,6 +1,8 @@
 package actions
 
 import (
+	"time"
+
 	"github.com/gobuffalo/buffalo/render"
 	"github.com/gobuffalo/packr/v2"
 )
@@ -23,6 +25,15 @@ func init() {
 			// below and import "github.com/gobuffalo/helpers/forms"
 			// forms.FormKey:     forms.Form,
 			// forms.FormForKey:  forms.FormFor,
+			"formatTime": func(t time.Time, format string) string {
+				switch format {
+				case "short":
+					return t.Format("Jan. 2, 2006")
+				case "long":
+					return t.Format("January 2, 2006")
+				}
+				return ""
+			},
 		},
 	})
 }

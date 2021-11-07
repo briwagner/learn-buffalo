@@ -1,0 +1,33 @@
+.header,
+.messages,
+.footer {
+  color: white;
+}
+
+.header {
+  background-color: green;
+
+  p {
+    padding: 1em 0;
+    font-size: 1.4em;
+    font-weight: 600;
+    font-style: italic;
+  }
+}
+
+.messages {
+  background-color: goldenrod;
+}
+
+.footer {
+  background-color: purple;
+  min-height: 220px;
+}
+
+.pre-header {
+  background: #666;
+  color: #fff;
+  margin: 0;
+  padding: 0 1em;
+  text-align: right;
+}

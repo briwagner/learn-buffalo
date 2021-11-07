@@ -2,7 +2,7 @@
 
 <%= form_for(blog, {action: blogsPath()}) { %>
   <%= f.InputTag("Title") %>
-  <%= f.TextArea("Body", {id: "editor", rows: 10}) %>
+  <%= f.TextArea("Body", {id: "editor", rows: 20}) %>
   <%= f.SubmitTag("Create") %>
 <% } %>
 
@@ -10,9 +10,9 @@
 
 <script>
   ClassicEditor
-    .create( document.querySelector( '#editor' ) )
+    .create( document.querySelector( '#editor' ))
     .then( editor => {
-      console.log( editor );
+      console.log( "editor is ready" );
     } )
     .catch( error => {
       console.error( error );
