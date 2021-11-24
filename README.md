@@ -4,12 +4,14 @@ This repo contains the code used in the Learn Buffalo video course.
 
 ## Part 5: HTML templates amd helpers
 
+* Buffalo template basics
+* default html page and modifying page title, favicon
+* global page regions
 * partials
-* helpers, linkTo()
-* contentFor is expanded into contentOf area; set default content as well
-* paginate
-* Auto() and JSON responses
-* disabling Bootstrap, in favor of default form helpers?
+* helpers: linkTo(), contentFor is expanded into contentOf area; set default content as well
+* override page template in the controller
+* plush basics, iterators, etc.
+* create a custom helper: formatTime
 
 ### Installation
 
