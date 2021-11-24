@@ -8,11 +8,11 @@ Sections Completed:
 1. <a href="https://github.com/briwagner/learn-buffalo/tree/part-2">Part 2</a>: create a user model, add fields and methods, and test it
 1. <a href="https://github.com/briwagner/learn-buffalo/tree/part-3">Part 3</a>: models and associations, one-to-one, one-to-many, many-to-many
 1. <a href="https://github.com/briwagner/learn-buffalo/tree/part-4">Part 4</a>: using controllers with our models
+1. <a href="https://github.com/briwagner/learn-buffalo/tree/part-5">Part 5</a>: HTML templates and helpers
+1. <a href="https://github.com/briwagner/learn-buffalo/tree/part-6">Part 6</a>: Forms
 
 Sections Planned:
 
-1. Part 5: HTML templates and helpers
-1. Part 6: Forms
 1. Part 7: CLI operations to build a production build, and other tasks
 1. Part 8: connecting to external resources for logging, email, database needs
 
