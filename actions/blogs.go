@@ -90,7 +90,6 @@ func BlogsNew(c buffalo.Context) error {
 		return c.Redirect(301, "/")
 	}
 
-	c.Set("blog", b)
 	c.Flash().Add("info", "Created blog")
 	return c.Redirect(301, fmt.Sprintf("/blogs/%s", b.ID.String()))
 }
