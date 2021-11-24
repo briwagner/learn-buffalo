@@ -19,7 +19,6 @@ require (
 	github.com/gobuffalo/packr/v2 v2.8.0
 	github.com/gobuffalo/plush/v4 v4.1.6 // indirect
 	github.com/gobuffalo/pop/v5 v5.3.4
-	github.com/gobuffalo/suite v2.8.2+incompatible
 	github.com/gobuffalo/suite/v3 v3.0.2
 	github.com/gobuffalo/validate/v3 v3.3.0
 	github.com/gofrs/uuid v4.0.0+incompatible
@@ -29,6 +28,7 @@ require (
 	github.com/markbates/grift v1.5.0
 	github.com/mattn/go-colorable v0.1.11 // indirect
 	github.com/microcosm-cc/bluemonday v1.0.15 // indirect
+	github.com/pkg/errors v0.9.1
 	github.com/rogpeppe/go-internal v1.8.0 // indirect
 	github.com/sergi/go-diff v1.2.0 // indirect
 	github.com/unrolled/secure v0.0.0-20190103195806-76e6d4e9b90c

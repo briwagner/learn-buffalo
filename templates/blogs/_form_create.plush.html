@@ -1,0 +1,6 @@
+<%= form({action: blogsPath(), method: "POST"}) { %>
+  <%= f.InputTag({name: "Title", label: "Title"}) %>
+  <%= f.TextArea({name: "Body", id: "editor", rows: 20}) %>
+  <%= f.SelectTag({name: "Tags", options: tags}) %>
+  <%= f.SubmitTag("Create") %>
+<% } %>

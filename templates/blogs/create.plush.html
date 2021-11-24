@@ -2,7 +2,8 @@
 
 <%= form_for(blog, {action: blogsPath()}) { %>
   <%= f.InputTag("Title") %>
-  <%= f.TextArea("Body", {id: "editor", rows: 20}) %>
+  <%= f.TextArea("Body", {id: "editor", rows: 20, class: "body-input"}) %>
+  <%= f.InputTag("Tags") %>
   <%= f.SubmitTag("Create") %>
 <% } %>
 

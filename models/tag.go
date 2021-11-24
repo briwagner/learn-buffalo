@@ -34,6 +34,16 @@ func (t *Tag) GetBlogs(tx *pop.Connection) error {
 	return nil
 }
 
+// SelectLabel displays Name when used as Selectable tag.
+func (t Tag) SelectLabel() string {
+	return t.Name
+}
+
+// SelectValue generates the ID when used as Selectable tag.
+func (t Tag) SelectValue() interface{} {
+	return t.ID
+}
+
 // Tags is not required by pop and may be deleted
 type Tags []Tag
 

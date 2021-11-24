@@ -1,13 +1,16 @@
 package actions
 
 import (
+	"database/sql"
 	"fmt"
 	"learnbuffalo/models"
 	"log"
 	"net/http"
+	"strings"
 
 	"github.com/gobuffalo/buffalo"
 	"github.com/gobuffalo/pop/v5"
+	"github.com/pkg/errors"
 )
 
 // BlogsShow shows blog by ID.
@@ -80,14 +83,49 @@ func BlogsNew(c buffalo.Context) error {
 
 	b.User = u
 
-	verrs, err := tx.ValidateAndCreate(b)
+	// Load tags to create blog-tags.
+	err = c.Request().ParseForm()
+	if err != nil {
+		log.Println(err)
+		c.Flash().Add("error", "Error parsing form.")
+		return c.Redirect(301, "/")
+	}
+
+	// Process Tags field as comma-separated text.
+	ts := c.Request().FormValue("Tags")
+	newTags := strings.Split(ts, ",")
+	for _, v := range newTags {
+		v = strings.TrimSpace(v)
+
+		t := &models.Tag{}
+		err := tx.Where("name = ?", v).Last(t)
+		if err != nil {
+			// Tag not found in DB, so create one.
+			if errors.Cause(err) == sql.ErrNoRows {
+				t.Name = v
+				err2 := tx.Create(t)
+				if err2 != nil {
+					log.Fatal(err2)
+				}
+			} else {
+				log.Fatal(err)
+				continue
+			}
+		}
+
+		b.BlogTags = append(b.BlogTags, *t)
+	}
+
+	verrs, err := tx.Eager().ValidateAndCreate(b)
 	if err != nil {
 		return c.Redirect(301, "/")
 	}
 
 	if verrs.HasAny() {
 		c.Flash().Add("warning", "Form validation errors")
-		return c.Redirect(301, "/")
+		c.Set("blog", b)
+		c.Set("errors", verrs)
+		return c.Render(422, r.HTML("blogs/create.html", "admin.html"))
 	}
 
 	c.Flash().Add("info", "Created blog")
