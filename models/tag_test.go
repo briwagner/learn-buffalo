@@ -3,6 +3,8 @@ package models
 import "github.com/gofrs/uuid"
 
 func (ms *ModelSuite) Test_Tag() {
+
+	ms.LoadFixture("sample user")
 	t := &Tag{
 		Name: "Miscellaneous",
 	}
@@ -54,10 +56,13 @@ func (ms *ModelSuite) Test_TagGetBlogs() {
 	}
 
 	u := User{
-		FirstName: "Joe",
-		LastName:  "Smith",
-		Age:       25,
-		Blogs:     Blogs{*b1, *b2},
+		FirstName:            "Joe",
+		LastName:             "Smith",
+		Age:                  25,
+		Email:                "joe@smith.com",
+		Password:             "password",
+		PasswordConfirmation: "password",
+		Blogs:                Blogs{*b1, *b2},
 	}
 
 	_, err = db.Eager().ValidateAndCreate(&u)

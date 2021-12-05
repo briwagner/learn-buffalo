@@ -27,8 +27,8 @@ var _ = grift.Namespace("db", func() {
 		}
 
 		// Add a user
-		nikola := models.User{FirstName: "Nikola", LastName: "Tesla", Age: 35}
-		err := models.DB.Create(&nikola)
+		nikola := models.User{FirstName: "Nikola", LastName: "Tesla", Age: 35, Password: "password", PasswordConfirmation: "password", Email: "nikola@tesla.com"}
+		_, err := models.DB.ValidateAndCreate(&nikola)
 		if err != nil {
 			panic(err)
 		}
