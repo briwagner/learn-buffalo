@@ -4,8 +4,11 @@ import "github.com/gofrs/uuid"
 
 func (ms *ModelSuite) Test_User() {
 	u := &User{
-		FirstName: "Nikola",
-		LastName:  "Tesla",
+		FirstName:            "Nikola",
+		LastName:             "Tesla",
+		Email:                "nikola@tesla.com",
+		Password:             "password",
+		PasswordConfirmation: "password",
 	}
 
 	ms.Equal("Nikola Tesla", u.FullName(), "FullName returns user name.")
@@ -22,9 +25,12 @@ func (ms *ModelSuite) Test_User() {
 
 func (ms *ModelSuite) Test_UserAddress() {
 	u := &User{
-		FirstName: "Nikola",
-		LastName:  "Tesla",
-		Age:       25,
+		FirstName:            "Nikola",
+		LastName:             "Tesla",
+		Age:                  25,
+		Email:                "nikola@tesla.com",
+		Password:             "password",
+		PasswordConfirmation: "password",
 		UserAddress: Address{
 			Street: "1 Main Street",
 			City:   "Everytown",
@@ -54,9 +60,12 @@ func (ms *ModelSuite) Test_UserAddress() {
 
 func (ms *ModelSuite) Test_UserBlogs() {
 	u := &User{
-		FirstName: "Nikola",
-		LastName:  "Tesla",
-		Age:       25,
+		FirstName:            "Nikola",
+		LastName:             "Tesla",
+		Age:                  25,
+		Email:                "nikola@tesla.com",
+		Password:             "password",
+		PasswordConfirmation: "password",
 		Blogs: Blogs{Blog{
 			Title: "First blog",
 			Body:  "<p>Interesting content",

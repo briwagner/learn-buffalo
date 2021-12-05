@@ -59,13 +59,21 @@ func App() *buffalo.App {
 		// Setup and use translations:
 		app.Use(translations())
 
-		app.GET("/", BlogsIndex)
+		app.GET("/", HomeHandler)
+
+		//AuthMiddlewares
+		// app.Use(SetCurrentUser)
+		// app.Use(Authorize)
 
 		app.GET("/tags/{id}", TagsShow)
-		app.GET("/blogs/new", BlogsCreate)
+		app.GET("/blogs/new", Authorize(SetCurrentUser(BlogsCreate)))
 		app.GET("/blogs/{id}", BlogsShow)
 		app.GET("/blogs/", BlogsIndex)
 		app.POST("/blogs", BlogsNew)
+
+		//Routes for User registration
+		app.GET("/users/new", UsersNew)
+		app.POST("/users", UsersCreate)
 
 		app.ServeFiles("/", assetsBox) // serve files from the public directory
 	}
