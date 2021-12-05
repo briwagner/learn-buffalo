@@ -2,20 +2,18 @@
 
 This repo contains the code used in the Learn Buffalo video course.
 
-## Part 6: HTML forms amd helpers
+## Part 7: Authenication Plugin, Middleware
 
-* form_for() used with a model or struct
-* form() helper to manually build form elements
-* generate a select tag from a map of values
-* add SelectValue and SelectLabel to satisfy selectable interface
-* build handler to accept form data
-* Bind() method to decode form into struct
-* manually process the form to process individual fields
+* user authentication patterns
+* Plugins in Buffalo to generate boilerplate code
+* add email, password_hash fields to User, to use with authentication
+* using Middleware to check for login status, and fetch data for use in "next" handler
 
 ## Next Steps
 
-* add tests for the BlogsNew and BlogsCreate routes
-* modify the Tags field to use checkboxes
+* change model tests to reflect new fields on User
+* move DB setup steps from model tests into fixtures
+* add tests for new login/logout routes
 
 ### Installation
 
