@@ -1,0 +1,12 @@
+<div class="auth-center">
+  <%= if (current_user) { %>
+    <h1><%= current_user.Email %></h1>
+    <%= form({action: authPath(), method: "DELETE"}){ %>
+      <button class="btn btn-success">Logout</button>
+    <% } %>
+  <% } else { %>
+    <%= linkTo(authLoginPath()){ %>Sign In<% } %>
+    <%= linkTo(newUsersPath()){ %>Register<% } %>
+  <% } %>
+</div>
+

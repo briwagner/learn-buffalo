@@ -69,11 +69,17 @@ func App() *buffalo.App {
 		app.GET("/blogs/new", Authorize(SetCurrentUser(BlogsCreate)))
 		app.GET("/blogs/{id}", BlogsShow)
 		app.GET("/blogs/", BlogsIndex)
-		app.POST("/blogs", BlogsNew)
+		app.POST("/blogs", Authorize(SetCurrentUser(BlogsNew)))
 
 		//Routes for User registration
 		app.GET("/users/new", UsersNew)
 		app.POST("/users", UsersCreate)
+
+		// Authentication routes.
+		app.GET("/auth", SetCurrentUser(AuthLanding))
+		app.GET("/auth/login", AuthNew)
+		app.POST("/auth", AuthCreate)
+		app.DELETE("/auth", Authorize(SetCurrentUser(AuthDestroy)))
 
 		app.ServeFiles("/", assetsBox) // serve files from the public directory
 	}

@@ -1,5 +1,7 @@
 <h1>New Blog</h1>
 
+<h2>Welcome back <%= current_user.Email %></h2>
+
 <%= form_for(blog, {action: blogsPath()}) { %>
   <%= f.InputTag("Title") %>
   <%= f.TextArea("Body", {id: "editor", rows: 20, class: "body-input"}) %>

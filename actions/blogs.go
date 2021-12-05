@@ -10,6 +10,7 @@ import (
 
 	"github.com/gobuffalo/buffalo"
 	"github.com/gobuffalo/pop/v5"
+	"github.com/gofrs/uuid"
 	"github.com/pkg/errors"
 )
 
@@ -74,9 +75,9 @@ func BlogsNew(c buffalo.Context) error {
 		return c.Redirect(301, "/")
 	}
 
-	u := &models.User{}
-	err = tx.Last(u)
-	if err != nil {
+	u := c.Value("current_user").(*models.User)
+
+	if u.ID == uuid.Nil {
 		c.Flash().Add("warning", "Cannot find user")
 		return c.Redirect(301, "/")
 	}
