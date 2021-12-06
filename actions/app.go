@@ -71,7 +71,7 @@ func App() *buffalo.App {
 		app.GET("/blogs/", BlogsIndex)
 		app.POST("/blogs", Authorize(SetCurrentUser(BlogsNew)))
 
-		//Routes for User registration
+		// Routes for User registration
 		app.GET("/users/new", UsersNew)
 		app.POST("/users", UsersCreate)
 
@@ -80,6 +80,13 @@ func App() *buffalo.App {
 		app.GET("/auth/login", AuthNew)
 		app.POST("/auth", AuthCreate)
 		app.DELETE("/auth", Authorize(SetCurrentUser(AuthDestroy)))
+
+		// Alternative method to add middleware.
+		// auth := app.Group("/auth")
+		// auth.GET("/", SetCurrentUser(AuthLanding))
+		// auth.GET("/login", AuthNew)
+		// auth.POST("/", AuthCreate)
+		// auth.DELETE("/", Authorize(SetCurrentUser(AuthDestroy)))
 
 		app.ServeFiles("/", assetsBox) // serve files from the public directory
 	}
