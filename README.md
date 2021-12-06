@@ -8,12 +8,15 @@ This repo contains the code used in the Learn Buffalo video course.
 * Plugins in Buffalo to generate boilerplate code
 * add email, password_hash fields to User, to use with authentication
 * using Middleware to check for login status, and fetch data for use in "next" handler
+* add forms for User register and User login
+* add dynamic page for user landing to show login/logout, depending on auth status
 
 ## Next Steps
 
-* change model tests to reflect new fields on User
-* move DB setup steps from model tests into fixtures
-* add tests for new login/logout routes
+* tests: change model tests to reflect new fields on User
+* tests: move DB setup steps into fixtures
+* tests: add tests for new login/logout routes
+* Users: add dashboard page with list of current-user blogs
 
 ### Installation
 
