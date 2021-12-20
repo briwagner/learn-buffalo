@@ -2,6 +2,7 @@ package actions
 
 import (
 	"learnbuffalo/models"
+	"learnbuffalo/mongoconnector"
 	"log"
 
 	"github.com/gobuffalo/buffalo"
@@ -22,6 +23,12 @@ func UsersCreate(c buffalo.Context) error {
 	u := &models.User{}
 	if err := c.Bind(u); err != nil {
 		return errors.WithStack(err)
+	}
+
+	banned := mongoconnector.IsBanned(u.Email)
+	if banned {
+		c.Flash().Add("info", "That account is not authorized to use this site.")
+		return c.Redirect(301, "/users/new")
 	}
 
 	tx := c.Value("tx").(*pop.Connection)

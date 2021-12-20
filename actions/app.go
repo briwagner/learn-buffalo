@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"io"
 	"learnbuffalo/models"
+	"learnbuffalo/mongoconnector"
 	"log"
 	"net/http"
 	"os"
@@ -62,6 +63,12 @@ func App() *buffalo.App {
 		// c.Value("tx").(*pop.Connection)
 		// Remove to disable this.
 		app.Use(popmw.Transaction(models.DB))
+
+		// Check MongoDB connection
+		err := mongoconnector.Ping()
+		if err != nil {
+			log.Print(err)
+		}
 
 		// Setup and use translations:
 		app.Use(translations())
