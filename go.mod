@@ -8,6 +8,7 @@ require (
 	github.com/gobuffalo/buffalo v0.15.5
 	github.com/gobuffalo/buffalo-pop/v2 v2.3.0
 	github.com/gobuffalo/envy v1.9.0
+	github.com/gobuffalo/events v1.4.1
 	github.com/gobuffalo/fizz v1.13.0 // indirect
 	github.com/gobuffalo/flect v0.2.3 // indirect
 	github.com/gobuffalo/helpers v0.6.2 // indirect
@@ -33,6 +34,7 @@ require (
 	github.com/rogpeppe/go-internal v1.8.0 // indirect
 	github.com/sergi/go-diff v1.2.0 // indirect
 	github.com/unrolled/secure v0.0.0-20190103195806-76e6d4e9b90c
+	go.mongodb.org/mongo-driver v1.8.1
 	golang.org/x/crypto v0.0.0-20210921155107-089bfa567519
 	golang.org/x/net v0.0.0-20210929193557-e81a3d93ecf6 // indirect
 	golang.org/x/sync v0.0.0-20210220032951-036812b2e83c // indirect
