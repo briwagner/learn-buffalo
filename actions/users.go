@@ -2,8 +2,10 @@ package actions
 
 import (
 	"learnbuffalo/models"
+	"log"
 
 	"github.com/gobuffalo/buffalo"
+	"github.com/gobuffalo/events"
 	"github.com/gobuffalo/pop/v5"
 	"github.com/pkg/errors"
 )
@@ -37,6 +39,18 @@ func UsersCreate(c buffalo.Context) error {
 	c.Session().Set("current_user_id", u.ID)
 	c.Flash().Add("success", "Welcome to Buffalo!")
 
+	e := events.Event{
+		Kind:    "learnbuffalo:user:register",
+		Message: "",
+		Payload: events.Payload{"username": u.Email},
+	}
+
+	// Option to pass the type and payload directly.
+	// events.EmitPayload("learnbuffalo:user:register", events.Payload{"username": u.Email})
+
+	if err := events.Emit(e); err != nil {
+		log.Print(err.Error())
+	}
 	return c.Redirect(302, "/")
 }
 

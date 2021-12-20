@@ -1,11 +1,18 @@
 package actions
 
 import (
+	"fmt"
+	"io"
 	"learnbuffalo/models"
+	"log"
+	"net/http"
+	"os"
+	"strings"
 
 	"github.com/gobuffalo/buffalo"
 	"github.com/gobuffalo/buffalo-pop/v2/pop/popmw"
 	"github.com/gobuffalo/envy"
+	"github.com/gobuffalo/events"
 	forcessl "github.com/gobuffalo/mw-forcessl"
 	paramlogger "github.com/gobuffalo/mw-paramlogger"
 	"github.com/unrolled/secure"
@@ -116,4 +123,49 @@ func forceSSL() buffalo.MiddlewareFunc {
 		SSLRedirect:     ENV == "production",
 		SSLProxyHeaders: map[string]string{"X-Forwarded-Proto": "https"},
 	})
+}
+
+func init() {
+	_, err := events.Listen(func(e events.Event) {
+		if e.Kind == "learnbuffalo:user:register" {
+			slackURL := os.Getenv("SLACK_URL")
+			if slackURL == "" {
+				log.Print("slack url not set")
+				return
+			}
+
+			username, err := e.Payload.Pluck("username")
+			if err != nil {
+				log.Print(err.Error())
+				return
+			}
+
+			// Format and send message to Slack.
+			msg := strings.NewReader(fmt.Sprintf(`{"text": "new user added %s"}`, username))
+			req, err := http.NewRequest("POST", slackURL, msg)
+			if err != nil {
+				log.Printf("Could not build post request: %v", err.Error())
+				return
+			}
+			req.Header.Set("Content-Type", "application/json")
+
+			client := http.Client{}
+			resp, err := client.Do(req)
+			if err != nil {
+				log.Printf("Could not make post request: %v", err.Error())
+				return
+			}
+
+			// Failed to post to slack.
+			if resp.StatusCode != 200 {
+				defer resp.Body.Close()
+				errMsg, _ := io.ReadAll(resp.Body)
+				log.Printf("Slackbot error %s", errMsg)
+			}
+		}
+	})
+
+	if err != nil {
+		log.Print(err.Error())
+	}
 }
