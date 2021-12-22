@@ -9,6 +9,7 @@ import (
 	"net/http"
 	"os"
 	"strings"
+	"time"
 
 	"github.com/gobuffalo/buffalo"
 	"github.com/gobuffalo/buffalo-pop/v2/pop/popmw"
@@ -156,7 +157,10 @@ func init() {
 			}
 			req.Header.Set("Content-Type", "application/json")
 
-			client := http.Client{}
+			// Override default timeout.
+			client := http.Client{
+				Timeout: 5 * time.Second,
+			}
 			resp, err := client.Do(req)
 			if err != nil {
 				log.Printf("Could not make post request: %v", err.Error())
