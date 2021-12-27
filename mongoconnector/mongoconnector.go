@@ -2,7 +2,6 @@ package mongoconnector
 
 import (
 	"context"
-	"fmt"
 	"log"
 	"time"
 
@@ -28,7 +27,7 @@ func Ping() error {
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 	defer cancel()
 
-	fmt.Printf("Trying to connect to MongoDB %s...", mdb.Configuration.Collection)
+	log.Printf("Trying to connect to MongoDB %s...\n", mdb.Configuration.Collection)
 
 	client, err := mongo.Connect(ctx, options.Client().ApplyURI(mdb.Configuration.GetConnection()))
 	if err != nil {
@@ -44,7 +43,7 @@ func Ping() error {
 	if err != nil {
 		return err
 	}
-	fmt.Printf("Mongo found %d docs", int)
+	log.Printf("Mongo found %d docs\n", int)
 	return nil
 }
 
