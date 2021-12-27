@@ -5,6 +5,7 @@ import (
 	"io"
 	"learnbuffalo/models"
 	"learnbuffalo/mongoconnector"
+	"learnbuffalo/sendgrid_mailer"
 	"log"
 	"net/http"
 	"os"
@@ -67,6 +68,12 @@ func App() *buffalo.App {
 
 		// Check MongoDB connection
 		err := mongoconnector.Ping()
+		if err != nil {
+			log.Print(err)
+		}
+
+		// Check Sendgrid_Mailer
+		err = sendgrid_mailer.Register()
 		if err != nil {
 			log.Print(err)
 		}
