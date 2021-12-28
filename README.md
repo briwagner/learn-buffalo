@@ -2,22 +2,19 @@
 
 This repo contains the code used in the Learn Buffalo video course.
 
-## Part 7: Authenication Plugin, Middleware
+## Part 8: Third-party Integrations and Events
 
-* user authentication patterns
-* Plugins in Buffalo to generate boilerplate code
-* <a href="https://github.com/gobuffalo/buffalo-auth">buffalo-auth plugin</a>
-* add email, password_hash fields to User, to use with authentication
-* using Middleware to check for login status, and fetch data for use in "next" handler
-* add forms for User register and User login
-* add dynamic page for user landing to show login/logout, depending on auth status
+* storing credentials in .env file
+* connecting to MongoDB, Slack webhooks, Sendgrid API
+* Buffalo events and event-listeners
+* adding a health check in the app launch process
+* emitting events with payload data
+* adding event listeners in the app.go file and custom packages
 
 ## Next Steps
 
-* tests: change model tests to reflect new fields on User
-* tests: move DB setup steps into fixtures
-* tests: add tests for new login/logout routes
-* Users: add dashboard page with list of current-user blogs
+* testing connections to third-party services
+* extending Mongo to read other collections; storing data
 
 ### Installation
 
