@@ -15,7 +15,7 @@ Sections Completed:
 
 Sections Planned:
 
-1. Part 8: CLI operations to build a production build, and other tasks
+1. Part 9: CLI operations to build a production build, and other tasks
 
 ## Installation
 
