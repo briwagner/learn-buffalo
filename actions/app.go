@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"io"
 	"learnbuffalo/models"
-	"learnbuffalo/mongoconnector"
 	"learnbuffalo/sendgrid_mailer"
 	"log"
 	"net/http"
@@ -67,13 +66,13 @@ func App() *buffalo.App {
 		app.Use(popmw.Transaction(models.DB))
 
 		// Check MongoDB connection
-		err := mongoconnector.Ping()
-		if err != nil {
-			log.Print(err)
-		}
+		// err := mongoconnector.Ping()
+		// if err != nil {
+		// 	log.Print(err)
+		// }
 
 		// Check Sendgrid_Mailer
-		err = sendgrid_mailer.Register()
+		err := sendgrid_mailer.Register()
 		if err != nil {
 			log.Print(err)
 		}
