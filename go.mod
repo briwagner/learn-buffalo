@@ -32,6 +32,8 @@ require (
 	github.com/microcosm-cc/bluemonday v1.0.15 // indirect
 	github.com/pkg/errors v0.9.1
 	github.com/rogpeppe/go-internal v1.8.0 // indirect
+	github.com/sendgrid/rest v2.6.7+incompatible // indirect
+	github.com/sendgrid/sendgrid-go v3.10.5+incompatible
 	github.com/sergi/go-diff v1.2.0 // indirect
 	github.com/unrolled/secure v0.0.0-20190103195806-76e6d4e9b90c
 	go.mongodb.org/mongo-driver v1.8.1
