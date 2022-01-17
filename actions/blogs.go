@@ -39,7 +39,7 @@ func BlogsShow(c buffalo.Context) error {
 	err := tx.Eager().Find(&blog, blog_id)
 	if err != nil {
 		c.Flash().Add("warning", "Blog not found.")
-		c.Redirect(404, "/")
+		return c.Error(404, errors.New("Blog not found"))
 	}
 
 	if len(blog.BlogTags) > 0 {
