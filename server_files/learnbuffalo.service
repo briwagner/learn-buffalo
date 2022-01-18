@@ -1,0 +1,14 @@
+[Unit]
+Description=Learnbuffalo app
+After=mariadb.service
+
+[Service]
+WorkingDirectory=/usr/local/bin
+ExecStart=/usr/local/bin/learnbuffalo
+User=root
+Group=root
+UMask=007
+EnvironmentFile=/etc/learnbuffalo.service/learnbuffalo.conf
+
+[Install]
+WantedBy=multi-user.target

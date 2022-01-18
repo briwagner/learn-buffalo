@@ -2,19 +2,15 @@
 
 This repo contains the code used in the Learn Buffalo video course.
 
-## Part 8: Third-party Integrations and Events
+## Part 9: Build for Production and Deploy
 
-* storing credentials in .env file
-* connecting to MongoDB, Slack webhooks, Sendgrid API
-* Buffalo events and event-listeners
-* adding a health check in the app launch process
-* emitting events with payload data
-* adding event listeners in the app.go file and custom packages
-
-## Next Steps
-
-* testing connections to third-party services
-* extending Mongo to read other collections; storing data
+* `buffalo build` command and flags (-o, -v, --clean-assets)
+* production mode versus development mode
+* enabling Buffalo TLS server
+* checklist for deploying on a remote server (i.e. Ubuntu linux)
+* systemd configuration
+* nginx configuration
+* securing sensitive routes
 
 ### Installation
 
