@@ -12,10 +12,7 @@ Sections Completed:
 1. <a href="https://github.com/briwagner/learn-buffalo/tree/part-6">Part 6</a>: Forms, form_for() helper, form() helper, manually parse and grab form values from the request
 1. <a href="https://github.com/briwagner/learn-buffalo/tree/part-7">Part 7</a>: Middleware and user authentication with Buffalo Plugins
 1. <a href="https://github.com/briwagner/learn-buffalo/tree/part-8">Part 8</a>: Third-party Integrations and Events
-
-Sections Planned:
-
-1. Part 9: CLI operations to build a production build, and other tasks
+1. <a href="https://github.com/briwagner/learn-buffalo/tree/part-9">Part 9</a>: CLI operations to build a production build, and other tasks
 
 ## Installation
 
