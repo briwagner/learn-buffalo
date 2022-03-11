@@ -2,7 +2,7 @@
 
 This repo contains the code used in the Learn Buffalo video course.
 
-## Part 5: HTML templates amd helpers
+## Part 5: HTML templates and helpers
 
 * Buffalo template basics
 * default html page and modifying page title, favicon
