@@ -13,6 +13,7 @@ Sections Completed:
 1. <a href="https://github.com/briwagner/learn-buffalo/tree/part-7">Part 7</a>: Middleware and user authentication with Buffalo Plugins
 1. <a href="https://github.com/briwagner/learn-buffalo/tree/part-8">Part 8</a>: Third-party Integrations and Events
 1. <a href="https://github.com/briwagner/learn-buffalo/tree/part-9">Part 9</a>: CLI operations to build a production build, and other tasks
+1. <a href="https://github.com/briwagner/learn-buffalo/tree/part-10">Part 10</a>: Develop and Deploy with Docker, using a cloud hosted database, or with docker-compose
 
 ## Installation
 
