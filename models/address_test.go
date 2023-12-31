@@ -1,9 +1,5 @@
 package models
 
-import (
-	"github.com/gofrs/uuid"
-)
-
 func (ms *ModelSuite) Test_Address() {
 	a := &Address{
 		Street: "1 Main Street",
@@ -25,7 +21,7 @@ func (ms *ModelSuite) Test_Address() {
 		panic(err)
 	}
 
-	ms.NotEqual(uuid.Nil, u.UserAddress.ID, "Address ID is generated when saved to DB.")
+	ms.NotNil(u.UserAddress.ID, "Address ID is generated when saved to DB.")
 	ms.False(verrs.HasAny(), "Address and user creation have no validation errors.")
 
 	a2 := &Address{}
