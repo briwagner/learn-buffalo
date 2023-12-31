@@ -1,22 +1,30 @@
 package actions
 
 import (
+	"net/http"
+	"sync"
+
+	"learnbuffalo/locales"
+	"learnbuffalo/public"
+
 	"github.com/gobuffalo/buffalo"
 	"github.com/gobuffalo/envy"
-	forcessl "github.com/gobuffalo/mw-forcessl"
-	paramlogger "github.com/gobuffalo/mw-paramlogger"
+	"github.com/gobuffalo/middleware/csrf"
+	"github.com/gobuffalo/middleware/forcessl"
+	"github.com/gobuffalo/middleware/i18n"
+	"github.com/gobuffalo/middleware/paramlogger"
 	"github.com/unrolled/secure"
-
-	csrf "github.com/gobuffalo/mw-csrf"
-	i18n "github.com/gobuffalo/mw-i18n"
-	"github.com/gobuffalo/packr/v2"
 )
 
 // ENV is used to help switch settings based on where the
 // application is being run. Default is "development".
 var ENV = envy.Get("GO_ENV", "development")
-var app *buffalo.App
-var T *i18n.Translator
+
+var (
+	app     *buffalo.App
+	appOnce sync.Once
+	T       *i18n.Translator
+)
 
 // App is where all routes and middleware for buffalo
 // should be defined. This is the nerve center of your
@@ -32,7 +40,7 @@ var T *i18n.Translator
 // placed last in the route declarations, as it will prevent routes
 // declared after it to never be called.
 func App() *buffalo.App {
-	if app == nil {
+	appOnce.Do(func() {
 		app = buffalo.New(buffalo.Options{
 			Env:         ENV,
 			SessionName: "_learnbuffalo_session",
@@ -60,8 +68,8 @@ func App() *buffalo.App {
 		app.GET("/about", AboutHandler)
 		app.GET("/user/{user_id}", UserHandler)
 
-		app.ServeFiles("/", assetsBox) // serve files from the public directory
-	}
+		app.ServeFiles("/", http.FS(public.FS())) // serve files from the public directory
+	})
 
 	return app
 }
@@ -72,7 +80,7 @@ func App() *buffalo.App {
 // for more information: https://gobuffalo.io/en/docs/localization
 func translations() buffalo.MiddlewareFunc {
 	var err error
-	if T, err = i18n.New(packr.New("app:locales", "../locales"), "en-US"); err != nil {
+	if T, err = i18n.New(locales.FS(), "en-US"); err != nil {
 		app.Stop(err)
 	}
 	return T.Middleware()
