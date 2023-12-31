@@ -1,8 +1,7 @@
 # This is a multi-stage Dockerfile and requires >= Docker 17.05
 # https://docs.docker.com/engine/userguide/eng-image/multistage-build/
-FROM gobuffalo/buffalo:v0.16.26 as builder
+FROM gobuffalo/buffalo:v0.18.14 as builder
 
-ENV GO111MODULE on
 ENV GOPROXY http://proxy.golang.org
 
 RUN mkdir -p /src/learnbuffalo
@@ -10,8 +9,10 @@ WORKDIR /src/learnbuffalo
 
 # this will cache the npm install step, unless package.json changes
 ADD package.json .
-ADD yarn.lock .
-RUN yarn install --no-progress
+ADD yarn.lock .yarnrc.yml ./
+RUN mkdir .yarn
+COPY .yarn .yarn
+RUN yarn install
 # Copy the Go Modules manifests
 COPY go.mod go.mod
 COPY go.sum go.sum
