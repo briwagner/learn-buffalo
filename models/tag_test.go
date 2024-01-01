@@ -13,9 +13,7 @@ func (ms *ModelSuite) Test_Tag() {
 
 	db := ms.DB
 	verrs, err := db.ValidateAndCreate(t)
-	if err != nil {
-		panic(err)
-	}
+	ms.NoError(err)
 
 	ms.NotEqual(uuid.Nil, t.ID, "Tag ID is generated when saved to DB.")
 	ms.False(verrs.HasAny(), "Tag has no validation errors.")
