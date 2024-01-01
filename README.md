@@ -2,6 +2,8 @@
 
 This repo contains the code used in the Learn Buffalo video course.
 
+> Updated Dec. 2023 to work with `go:embed` directive and other changes for Buffalo version <a href="https://github.com/gobuffalo/cli/releases/tag/v0.18.14">18.14</a>
+
 ## Part 10: Develop or Deploy with Docker
 
 NOTE: the code change in this branch is limited to the sample docker-compose.yml file. This file is included as an example, as it was written for a project using Postgres, not MariaDB as we used for the previous lessons. It can be modified to use a <a href="https://hub.docker.com/_/mariadb">MariaDB container</a> instead of Postgres.
