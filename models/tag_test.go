@@ -9,9 +9,7 @@ func (ms *ModelSuite) Test_Tag() {
 
 	db := ms.DB
 	verrs, err := db.ValidateAndCreate(t)
-	if err != nil {
-		panic(err)
-	}
+	ms.NoError(err)
 
 	ms.NotEqual(uuid.Nil, t.ID, "Tag ID is generated when saved to DB.")
 	ms.False(verrs.HasAny(), "Tag has no validation errors.")
@@ -28,16 +26,12 @@ func (ms *ModelSuite) Test_TagGetBlogs() {
 
 	db := ms.DB
 	verrs, err := db.ValidateAndCreate(t1)
-	if err != nil {
-		panic(err)
-	}
+	ms.NoError(err)
 	ms.NotEqual(uuid.Nil, t1.ID, "Tag ID is generated when saved to DB.")
 	ms.False(verrs.HasAny(), "Tag has no validation errors.")
 
 	verrs, err = db.ValidateAndCreate(t2)
-	if err != nil {
-		panic(err)
-	}
+	ms.NoError(err)
 	ms.NotEqual(uuid.Nil, t2.ID, "Tag ID is generated when saved to DB.")
 	ms.False(verrs.HasAny(), "Tag has no validation errors.")
 
@@ -60,22 +54,16 @@ func (ms *ModelSuite) Test_TagGetBlogs() {
 		Blogs:     Blogs{*b1, *b2},
 	}
 
-	_, err = db.Eager().ValidateAndCreate(&u)
-	if err != nil {
-		panic(err)
-	}
+	err = db.Eager().Create(&u)
+	ms.NoError(err)
 
 	// Load tag.
 	tag := &Tag{}
 	err = db.Find(tag, t2.ID)
-	if err != nil {
-		panic(err)
-	}
+	ms.NoError(err)
 
 	ms.Empty(tag.RelatedBlogs, "Blogs not loaded with tag.")
 	err = tag.GetBlogs(db)
-	if err != nil {
-		panic(err)
-	}
+	ms.NoError(err)
 	ms.NotEmpty(tag.RelatedBlogs, "GetBlogs function loads related blogs for tag.")
 }
