@@ -12,11 +12,8 @@ func (ms *ModelSuite) Test_User() {
 
 	ms.Equal("Nikola Tesla", u.FullName(), "FullName returns user name.")
 
-	// Skip the validation tests from Part 3.
-	ms.T().Skip()
-
 	db := ms.DB
-	verrs, err := db.ValidateAndCreate(u)
+	verrs, err := u.Create(db)
 	ms.NoError(err)
 	ms.NotNil(u.ID, "User ID is generated when saved to DB.")
 	ms.False(verrs.HasAny(), "No validation errors")
