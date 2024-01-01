@@ -1,7 +1,7 @@
 ---
 development:
   dialect: "mariadb"
-  database: "learnbuffalo"
+  database: "modelsdemo"
   host: "localhost"
   port: "3306"
   user: "buffalo"
@@ -17,7 +17,7 @@ test:
   # Note that if you use `url`, other configurations are silently ignored.
   # In this case, the URL must contain all required connection parameters.
   #
-  database: "learnbuffalo_test"
+  database: "modelsdemo_test"
   host: "localhost"
   port: "3306"
   user: "buffalo"
