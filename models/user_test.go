@@ -6,17 +6,24 @@ func (ms *ModelSuite) Test_User() {
 	u := &User{
 		FirstName: "Nikola",
 		LastName:  "Tesla",
+		Age:       86,
 	}
 
 	ms.Equal("Nikola Tesla", u.FullName(), "FullName returns user name.")
 
 	db := ms.DB
 	verrs, err := db.ValidateAndCreate(u)
-	if err != nil {
-		panic(err)
-	}
-
+	ms.NoError(err)
 	ms.NotNil(u.ID, "User ID is generated when saved to DB.")
+	ms.False(verrs.HasAny(), "No validation errors")
+
+	// Test with incomplete data.
+	u2 := &User{
+		FirstName: "Thomas",
+		LastName:  "Edison",
+	}
+	verrs, err = db.ValidateAndCreate(u2)
+	ms.NoError(err)
 	ms.True(verrs.HasAny(), "User cannot be created without age field.")
 }
 
@@ -34,18 +41,14 @@ func (ms *ModelSuite) Test_UserAddress() {
 	}
 
 	db := ms.DB
-	_, err := db.Eager().ValidateAndCreate(u)
-	if err != nil {
-		panic(err)
-	}
+	err := db.Eager().Create(u)
+	ms.NoError(err)
 
 	ms.NotEqual(uuid.Nil, u.UserAddress.ID, "Address saved along with User.")
 
 	u2 := User{}
 	err = db.Find(&u2, u.ID)
-	if err != nil {
-		panic(err)
-	}
+	ms.NoError(err)
 
 	ms.Empty(u2.UserAddress, "User address not loaded by default")
 	u2.GetAddress(db)
@@ -64,23 +67,17 @@ func (ms *ModelSuite) Test_UserBlogs() {
 	}
 
 	db := ms.DB
-	_, err := db.Eager().ValidateAndCreate(u)
-	if err != nil {
-		panic(err)
-	}
+	err := db.Eager().Create(u)
+	ms.NoError(err)
 
 	u2 := User{}
 	err = db.Find(&u2, u.ID)
-	if err != nil {
-		panic(err)
-	}
+	ms.NoError(err)
 
 	ms.Empty(u2.Blogs, "Blogs not loaded with user by default.")
 	ms.Equal("Nikola Tesla", u2.FullName(), "Confirm the correct user is loaded.")
 
 	err = u2.GetBlogs(db)
-	if err != nil {
-		panic(err)
-	}
+	ms.NoError(err)
 	ms.Len(u2.Blogs, 1, "GetBlogs loads the user's blogs.")
 }
