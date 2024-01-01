@@ -16,9 +16,7 @@ func (ms *ModelSuite) Test_Address() {
 
 	db := ms.DB
 	_, err := u.Create(db)
-	if err != nil {
-		panic(err)
-	}
+	ms.NoError(err)
 
 	a := &Address{
 		Street: "1 Main Street",
@@ -28,9 +26,7 @@ func (ms *ModelSuite) Test_Address() {
 		UserID: u.ID,
 	}
 	verrs, err := db.ValidateAndCreate(a)
-	if err != nil {
-		panic(err)
-	}
+	ms.NoError(err)
 
 	ms.False(verrs.HasAny(), "Address creation has no validation errors.")
 	ms.NotEqual(uuid.Nil, a.ID, "Address ID is generated when saved to DB.")

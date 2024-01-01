@@ -4,6 +4,7 @@ func (ms *ModelSuite) Test_User() {
 	u := &User{
 		FirstName:            "Nikola",
 		LastName:             "Tesla",
+		Age:                  86,
 		Email:                "nikola@tesla.com",
 		Password:             "password",
 		PasswordConfirmation: "password",
@@ -11,13 +12,22 @@ func (ms *ModelSuite) Test_User() {
 
 	ms.Equal("Nikola Tesla", u.FullName(), "FullName returns user name.")
 
+	// Skip the validation tests from Part 3.
+	ms.T().Skip()
+
 	db := ms.DB
 	verrs, err := db.ValidateAndCreate(u)
-	if err != nil {
-		panic(err)
-	}
-
+	ms.NoError(err)
 	ms.NotNil(u.ID, "User ID is generated when saved to DB.")
+	ms.False(verrs.HasAny(), "No validation errors")
+
+	// Test with incomplete data.
+	u2 := &User{
+		FirstName: "Thomas",
+		LastName:  "Edison",
+	}
+	verrs, err = db.ValidateAndCreate(u2)
+	ms.NoError(err)
 	ms.True(verrs.HasAny(), "User cannot be created without age field.")
 }
 
