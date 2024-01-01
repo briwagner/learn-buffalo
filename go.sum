@@ -102,6 +102,8 @@ github.com/gobuffalo/attrs v0.1.0/go.mod h1:fmNpaWyHM0tRm8gCZWKx8yY9fvaNLo2PyzBN
 github.com/gobuffalo/attrs v1.0.3/go.mod h1:KvDJCE0avbufqS0Bw3UV7RQynESY0jjod+572ctX4t8=
 github.com/gobuffalo/buffalo v1.1.0 h1:6y1fUC47QWevaM1ImukJFHNgxiRIT+Y74VcP4ZQaz80=
 github.com/gobuffalo/buffalo v1.1.0/go.mod h1:lLsx9Y8bFYu9uvQyIEB3M0QA908ChHUPjwOGumZWARU=
+github.com/gobuffalo/buffalo-pop/v3 v3.0.7 h1:QU2L9cjCIjK+c+2s/3KbxfRSDAc/TC+HccV+f9YqMTs=
+github.com/gobuffalo/buffalo-pop/v3 v3.0.7/go.mod h1:5SEv2JrcuZtUFVQuQbAMx7Woc4ZsdcANa/tiP/bFrw0=
 github.com/gobuffalo/envy v1.8.1/go.mod h1:FurDp9+EDPE4aIUS3ZLyD+7/9fpx7YRt/ukY6jIHf0w=
 github.com/gobuffalo/envy v1.10.2 h1:EIi03p9c3yeuRCFPOKcSfajzkLb3hrRjEpHGI8I2Wo4=
 github.com/gobuffalo/envy v1.10.2/go.mod h1:qGAGwdvDsaEtPhfBzb3o0SfDea8ByGn9j8bKmVft9z8=
