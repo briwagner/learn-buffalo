@@ -2,6 +2,8 @@
 
 This repo contains the code used in the Learn Buffalo video course.
 
+> Updated Dec. 2023 to work with `go:embed` directive and other changes for Buffalo version <a href="https://github.com/gobuffalo/cli/releases/tag/v0.18.14">18.14</a>
+
 ## Part 9: Build for Production and Deploy
 
 * `buffalo build` command and flags (-o, -v, --clean-assets)
