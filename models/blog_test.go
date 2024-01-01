@@ -22,9 +22,7 @@ func (ms *ModelSuite) Test_Blog() {
 
 	db := ms.DB
 	verrs, err := db.Eager().ValidateAndCreate(u)
-	if err != nil {
-		panic(err)
-	}
+	ms.NoError(err)
 
 	ms.NotEqual(uuid.Nil, u.Blogs[0].ID, "Blog ID is generated when saved to DB.")
 	ms.NotEqual(uuid.Nil, u.Blogs[1].ID, "Blog ID is generated when saved to DB.")
