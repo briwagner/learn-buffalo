@@ -6,7 +6,7 @@ import (
 	"learnbuffalo/models"
 	"os"
 
-	"github.com/markbates/grift/grift"
+	"github.com/gobuffalo/grift/grift"
 )
 
 var _ = grift.Namespace("db", func() {
