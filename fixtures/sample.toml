@@ -25,6 +25,8 @@ name = "lots of widgets"
       id = "<%= uuid() %>"
       name = "Mark Bates"
       admin = true
+      email = "mark@gobuffalo.com"
+      password_hash = "<%= hash("password") %>"
       age = 41
       widget_id = "<%= uuidNamed("widget") %>"
       created_at = "<%= now() %>"
