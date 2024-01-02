@@ -19,9 +19,15 @@ Sections Completed:
 
 ## Installation
 
-Fork the project.
-Each part listed above has a matching branch.
+Fork the project (if you want to commit and push your own changes).
+Each part listed above has a matching branch. The branch for part-6, for example, is the end-state of the project code at the completion of video part-6. If you want to follow along with the part-6 video, you can `checkout part-5` and start making changes.
 After cloning the repo to your local machine, `git checkout {branch-name}` to view the part.
+
+When changing branches, use these handy buffalo commands to get a clean project state:
+* `buffalo pop reset` - this will wipe the database and rebuild with the migrations
+* `buffalo task db:seed` - part-4 and beyond include a DB seed task; this will load the relevant data into your dev database
+* `buffalo test` - run the tests to make sure everything is working before you get started
+* `buffalo dev` - run the dev server to see the site in your browser
 
 ## Buffalo Project
 
