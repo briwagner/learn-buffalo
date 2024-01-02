@@ -2,7 +2,7 @@ package actions
 
 import (
 	"encoding/json"
-	"io/ioutil"
+	"io"
 	"net/http"
 
 	"github.com/gobuffalo/buffalo"
@@ -53,7 +53,7 @@ func getUserInfo(user_id string) (User, error) {
 
 	defer resp.Body.Close()
 
-	b, err := ioutil.ReadAll(resp.Body)
+	b, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return User{}, err
 	}
